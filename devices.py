@@ -5,8 +5,28 @@ readings = [
     {"name": "fridge",     "room": "kitchen", "temp": 4.2,  "online": False},
     {"name": "patio",      "room": "outside", "temp": 29.8, "online": True},
 ]
+
 def list_devices(devices):
     for device in devices:
         print(device["name"], device["temp"])
 
 list_devices(readings)
+
+def average_temp(devices):
+    total = 0
+    for device in devices:
+        total += device["temp"]
+    return total / len(devices)
+
+print(average_temp(readings))
+
+def hottest(devices):
+    hottest_device = devices[0]
+    for device in devices:
+        if device["temp"] > hottest_device["temp"]:
+            hottest_device = device
+    return hottest_device
+
+print(hottest(readings))
+
+
